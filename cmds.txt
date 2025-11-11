@@ -1,0 +1,36 @@
+Command
+Example
+Description (What It Does)
+ipconfig
+ipconfig 
+Displays detailed network configuration — IP address, subnet mask, gateway, and DNS info for all adapters.
+ping
+ping google.com
+Tests network connectivity between your PC and a remote host (e.g., Google). Shows if packets are reaching and returning.(response time )
+tracert
+tracert google.com
+Traces the route data takes to a target, showing each router (hop) along the way and the time delay.
+netstat
+netstat -a or r
+
+
+Displays active network connections, open ports, and process IDs (PID) using them — great for finding what’s using your network.
+nslookup
+nslookup example.com
+Looks up the IP address for a domain name using the DNS system (or vice versa). Useful for DNS troubleshooting.
+arp
+arp -a
+Shows the ARP table — mapping between IP addresses and their corresponding MAC (hardware) addresses on your LAN.
+route
+route print
+Displays your computer’s routing table — how packets are forwarded within the network.
+getmac
+getmac
+Shows the physical (MAC) address of your network interfaces — used for identification at the data link layer.
+telnet
+telnet google.com 80
+Connects to a remote host on a specific port to test if that port/service is accessible (like HTTP on port 80).
+systeminfo
+systeminfo
+Displays complete system details — OS version, build, network cards, installed updates, boot time, etc. Useful for audits.
+
