@@ -1,37 +1,39 @@
 import heapq
-n, m = map(int, input("Enter number of nodes and edges: ").split())
+
+n,m = map(int, input("Enter number of nodes and edges: ").split())
 g = [[] for _ in range(n)]
 print("Enter edges (u v w):")
 for _ in range(m):
     u, v, w = map(int, input().split())
     g[u].append((v, w))
 s = int(input("Enter source node: "))
-d = {s: 0}
-q = [(0, s)]
-while q:
-    du, u = heapq.heappop(q)
-    if du > d[u]:
+dist = [float('inf')] * n
+parent = [-1] * n
+dist[s] = 0
+pq = [(0, s)]
+while pq:
+    d, u = heapq.heappop(pq)
+    if d > dist[u]:
         continue
     for v, w in g[u]:
-        nd = du + w
-        if v not in d or nd < d[v]:
-            d[v] = nd
-            heapq.heappush(q, (nd, v))
+        if dist[u] + w < dist[v]:
+            dist[v] = dist[u] + w
+            parent[v] = u
+            heapq.heappush(pq, (dist[v], v))
 
-# Neat output
-print("\nShortest distances from node", s)
-print("-" * 30)
-print(f"{'Node':<10}{'Distance':<10}")
-print("-" * 30)
+
+def get_path(v):
+    path = []
+    while v != -1:
+        path.append(v)
+        v = parent[v]
+    return path[::-1]
+
+print("Node   Distance   Path")
 for i in range(n):
-    dist = d[i] if i in d else "∞"
-    print(f"{i:<10}{dist:<10}")
-# Enter number of nodes and edges: 5 6
-# Enter edges (u v w):
-# 0 1 2
-# 0 2 4
-# 1 2 1
-# 1 3 7
-# 2 4 3
-# 3 4 1
-# Enter source node: 0
+    if dist[i] == float('inf'):
+        print(i, "   ", "∞", "        ", "-")
+    else:
+        path = get_path(i)
+        print(i, "   ", dist[i], "        ", " -> ".join(map(str, path)))
+
