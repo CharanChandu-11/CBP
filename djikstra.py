@@ -1,19 +1,13 @@
 import heapq
-
-# Input
 n, m = map(int, input("Enter number of nodes and edges: ").split())
 g = [[] for _ in range(n)]
 print("Enter edges (u v w):")
 for _ in range(m):
     u, v, w = map(int, input().split())
     g[u].append((v, w))
-
 s = int(input("Enter source node: "))
-
-# Dijkstra's algorithm
 d = {s: 0}
 q = [(0, s)]
-
 while q:
     du, u = heapq.heappop(q)
     if du > d[u]:

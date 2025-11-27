@@ -13,7 +13,6 @@ int main() {
     cout << "Enter your C program (end input with a single line containing only 'END'):\n";
     string line, code;
     
-    // Read multiple lines until user types "END"
     while (true) {
         getline(cin, line);
         if (line == "END") break;

@@ -19,7 +19,6 @@ vector<string> tokenizeRHS(const string &rhs) {
     for (int i = 0; i < (int)rhs.size();) {
         char c = rhs[i];
         if (isspace(c)) { i++; continue; }
-        // Nonterminal maybe with apostrophe: E'
         if (isupper(c)) {
             string nt; nt.push_back(c);
             if (i + 1 < (int)rhs.size() && rhs[i+1] == '\'') { nt.push_back('\''); i += 2; }
@@ -117,7 +116,7 @@ int main() {
     cout << "Enter productions (like E=TE'):\n";
     string line;
     for (int i = 0; i < n; ++i) {
-        cin >> line;                     // reads without spaces, fine for given format
+        cin >> line;                   
         // find separator '=' or "->"
         size_t pos = string::npos;
         pos = line.find('=');
